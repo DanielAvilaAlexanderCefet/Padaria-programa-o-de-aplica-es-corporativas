@@ -1,0 +1,14 @@
+br\cefetrj\servlet\CadastroProdIndServlet.class
+br\cefetrj\servlet\CadastroProdFServlet.class
+br\cefetrj\model\Gerente.class
+br\cefetrj\servlet\ClienteServlet.class
+br\cefetrj\servlet\CadastroServlet.class
+br\cefetrj\model\Industrializado.class
+br\cefetrj\servlet\CadastroVendedorServlet.class
+br\cefetrj\servlet\CadastroGerenteServlet.class
+br\cefetrj\model\PFrio.class
+br\cefetrj\servlet\PrimeiroServlet.class
+br\cefetrj\model\Usuario.class
+br\cefetrj\model\Cliente.class
+br\cefetrj\model\Produto.class
+br\cefetrj\model\Vendedor.class
