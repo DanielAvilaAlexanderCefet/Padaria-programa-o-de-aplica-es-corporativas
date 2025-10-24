@@ -13,36 +13,16 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet("/CadastroGerente")
-public class CadastroGerenteServlet extends HttpServlet {
-    private static final long serialVersionUID = 2L;
+public class CadastroGerenteServlet extends GenericServlet {
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.setContentType("text/html");
-        response.setCharacterEncoding("UTF-8");
-        response.getWriter().println("<html><body>");
-        response.getWriter().println("ID: " + request.getParameter("id") + "<br>");
-        response.getWriter().println("Nome: " + request.getParameter("nome") + "<br>");
-        response.getWriter().println("Senha: " + request.getParameter("senha") + "<br>");
-        response.getWriter().println("</body></html>");
+    @Override
+    protected Gerente preencherEntidade(HttpServletRequest request) {
+        Gerente gerente = new Gerente();
+        String id = request.getParameter("id");
+        gerente.setId(id != null && !id.isEmpty() ? Integer.parseInt(id) : null);
+        gerente.setNome(request.getParameter("nome"));
+        gerente.setSenha(request.getParameter("senha"));
 
-    }
-        protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws IOException, ServletException {
-        List<Gerente> gerentes = criaUsuarios();
-        request.setAttribute("gerentes", gerentes);
-        RequestDispatcher rd = request.getRequestDispatcher("lista-Gerentes.jsp");
-
-        rd.forward(request, response);
-    }
-
-    private List<Gerente> criaUsuarios() {
-        List<Gerente> gerentes = new ArrayList<>();
-        Gerente gerente1 = new Gerente(1, "Gerente1","senha1");
-        Gerente gerente2 = new Gerente(2, "Gerente2","senha2");
-        Gerente gerente3 = new Gerente(3, "Gerente3","senha3");
-        gerentes.add(gerente1);
-        gerentes.add(gerente2);
-        gerentes.add(gerente3);
-        return gerentes;
+        return gerente;
     }
 }

@@ -1,19 +1,7 @@
 package br.cefetrj.model;
-public class Usuario {
-    public int id;
+public class Usuario extends Entidade {
     public String nome;
     public String senha;
-    public Usuario(int id,String nome,String senha){
-        this.id=id;
-        this.nome=nome;
-        this.senha=senha;
-    }
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getNome() {
         return nome;

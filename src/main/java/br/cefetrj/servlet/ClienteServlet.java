@@ -13,35 +13,17 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet("/Cliente")
-public class ClienteServlet extends HttpServlet {
-    private static final long serialVersionUID = 3L;
+public class ClienteServlet extends GenericServlet {
+    
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.setContentType("text/html");
-        response.setCharacterEncoding("UTF-8");
-        response.getWriter().println("<html><body>");
-        response.getWriter().println("Nome: " + request.getParameter("nome") + "<br>");
-        response.getWriter().println("Idade: " + request.getParameter("idade") + "<br>");
-        response.getWriter().println("</body></html>");
-    }
+    @Override
+    protected Cliente preencherEntidade(HttpServletRequest request) {
+        Cliente cliente = new Cliente();
+        String id = request.getParameter("id");
+        cliente.setId(id != null && !id.isEmpty() ? Integer.parseInt(id) : null);
+        cliente.setNome(request.getParameter("nome"));
+        cliente.setIdade(Integer.parseInt(request.getParameter("idade")));
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws IOException, ServletException {
-        List<Cliente> clientes = criaClientes();
-        request.setAttribute("clientes", clientes);
-        RequestDispatcher rd = request.getRequestDispatcher("lista-clientes.jsp");
-
-        rd.forward(request, response);
-    }
-
-    private List<Cliente> criaClientes() {
-        List<Cliente> clientes = new ArrayList<>();
-        Cliente cliente1 = new Cliente("Cliente 1", 23);
-        Cliente cliente2 = new Cliente("Cliente 2", 19);
-        Cliente cliente3 = new Cliente("Cliente 3", 25);
-        clientes.add(cliente1);
-        clientes.add(cliente2);
-        clientes.add(cliente3);
-        return clientes;
+        return cliente;
     }
 }

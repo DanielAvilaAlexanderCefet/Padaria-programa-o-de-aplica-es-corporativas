@@ -1,13 +1,10 @@
 package br.cefetrj.model;
-public class Produto {
+public class Produto extends Entidade  {
     public int quantidade;
     public String nome;
     public double preco;
-    public Produto(String nome,int preco,int quantidade){
-        this.nome=nome;
-        this.preco=preco;
-        this.quantidade=quantidade;
-    }
+
+    
     public double getPreco() {
         return preco;
     }
